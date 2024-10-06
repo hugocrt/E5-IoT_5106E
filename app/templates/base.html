@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT-5106E FlaskApp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer-navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/inputs.css') }}">
+    {% block css %}{% endblock %}
+    {% block javascript %}{% endblock %}
+</head>
+
+<body>
+    <header>
+        <div class="navbar2">
+        <nav class="navbar">
+            <ul class="dock">
+                <li class="{{ 'active' if info['current_page'] == 'home' else '' }}">
+                    <a href="{{ url_for('main.index') }}">
+                        <img src="{{ url_for('static', filename='img/home-icon-silhouette.png') }}" alt="Home">
+                        <span class="icon-text">Home</span>
+                    </a>
+                </li>
+                <li class="{{ 'active' if info['current_page'] == 'search' else '' }}">
+                    <a href="{{ url_for('main.search') }}">
+                        <img src="{{ url_for('static', filename='img/satellite.png') }}" alt="Satellites">
+                        <span class="icon-text">Satellites</span>
+                    </a>
+                </li>
+                <li class="{{ 'active' if info['current_page'] == 'information' else '' }}">
+                    <a href="{{ url_for('main.information') }}">
+                        <img src="{{ url_for('static', filename='img/info.png') }}" alt="Information">
+                        <span class="icon-text">Information</span>
+                    </a>
+                </li>
+                <li class="{{ 'active' if info['current_page'] == 'where_am_i' else '' }}">
+                    <a href="{{ url_for('main.where_am_i') }}">
+                        <img src="{{ url_for('static', filename='img/maps-and-flags.png') }}" alt="References">
+                        <span class="icon-text">Where am I?</span>
+                    </a>
+                </li>
+                <li class="{{ 'active' if info['current_page'] == 'references' else '' }}">
+                    <a href="{{ url_for('main.references') }}">
+                        <img src="{{ url_for('static', filename='img/link.png') }}" alt="References">
+                        <span class="icon-text">References</span>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+        </div>
+    </header>
+
+    <h1 id="page-title">{% block page_title %}{% endblock %}</h1>
+
+    <div class="content">
+        {% block body %}{% endblock %}
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <img class="logo" src="{{ url_for('static', filename='img/ESIEE_Paris_RGB.png') }}" alt="logo_esiee" class="footer-logo">
+            <div class="credits-container">
+                <p>Created by Hugo CARANGEOT, supervised by Ms. Nawel ZANGAR ATTIA.</p>
+            </div>
+            <div class="copyright-container">
+                <p>&copy; Copyright 2024</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

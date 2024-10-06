@@ -1,0 +1,5 @@
+Flask~=3.0.3
+elasticsearch~=8.15.1
+skyfield~=1.49
+requests~=2.32.3
+folium~=0.17.0

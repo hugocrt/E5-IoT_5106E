@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block page_title %}{% block h1 %}
+    References
+{% endblock %}{% endblock %}
+
+{% block body %}
+<p>This is a project carried out as part of my studies at <b>ESIEE Paris</b>, in the course <b>IoT-5106E</b> taught by Nawel ZANGAR ATTIA.</p>
+<p>CSV satellites dataset found on <a href="https://celestrak.com">CelesTrak</a>.</p>
+<p>I used this python library to do the calculations for the satellites <a href="https://rhodesmill.org/skyfield/">Python Skyfield Library</a>.</p>
+
+<h1>Apps and Tools</h1>
+<div class="flex-container">
+    <div class="sub-flex-container">
+        <h2>PyCharm</h2>
+        <div class="svg-container">
+            <img src="{{ url_for('static', filename='img/pycharm.svg') }}" alt="PyCharm Logo">
+        </div>
+        <p><b>PyCharm</b> was used as the primary development environment for writing and debugging Python code.</p>
+    </div>
+
+    <div class="sub-flex-container">
+        <h2>GitHub</h2>
+        <div class="svg-container">
+            <img src="{{ url_for('static', filename='img/github-light.svg') }}" alt="GitHub Logo">
+        </div>
+        <p><b>GitHub</b> was used for version control, enabling tracking of changes.</p>
+    </div>
+
+    <div class="sub-flex-container">
+        <h2>Docker</h2>
+        <div class="svg-container">
+            <img src="{{ url_for('static', filename='img/docker.svg') }}" alt="Docker Logo">
+        </div>
+        <p><b>Docker</b> allowed for containerization of the application, ensuring consistent deployment in different environments.</p>
+    </div>
+</div>
+
+<h1>Programming languages</h1>
+<div class="flex-container">
+    <div class="sub-flex-container">
+        <h2>Frontend Development</h2>
+        <div class="svg-container">
+            <img src="{{ url_for('static', filename='img/html5.svg') }}" alt="HTML5 Logo">
+            <img src="{{ url_for('static', filename='img/css.svg') }}" alt="CSS Logo">
+            <img src="{{ url_for('static', filename='img/javascript.svg') }}" alt="JavaScript Logo">
+        </div>
+        <p>
+            <b>HTML5, CSS, and JavaScript</b> were used to create the web interface, ensuring users could interact with the data easily.
+        </p>
+    </div>
+
+    <div class="sub-flex-container">
+        <h2>Backend Development</h2>
+        <div class="svg-container">
+            <img src="{{ url_for('static', filename='img/python.svg') }}" alt="Python Logo">
+            <img src="{{ url_for('static', filename='img/flask-wordmark-light.svg') }}" alt="Flask Logo">
+            <img src="{{ url_for('static', filename='img/elastic.svg') }}" alt="ElasticSearch Logo">
+        </div>
+        <p>
+            - <b>Python</b> was the main programming language for backend logic, handling satellite data processing and integration with Elasticsearch.<br>
+            - <b>Flask</b> was used as the micro-framework to develop the web application, facilitating communication between the frontend and backend.<br>
+            - <b>Elasticsearch</b> was used as the search and analytics engine, enabling efficient indexing, querying, and retrieval of satellite pass data. It allowed for fast data storage and retrieval, making it easy to search and filter satellite information based on various parameters.
+        </p>
+    </div>
+</div>
+{% endblock %}

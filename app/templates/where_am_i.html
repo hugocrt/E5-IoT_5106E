@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block page_title %}
+    Where am I?
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/where-i-am.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="flex-container">
+    <div class="sub-flex-container">
+        <h1>Your Current Location</h1>
+        <div class="centered-text">
+            {% if info.location %}
+                <p>City: <span class="data-value">{{ info.location.city }}</span>,
+                   <span class="data-value">{{ info.location.postal }}</span>,
+                   <span class="data-value">{{ info.location.region }}</span>,
+                   <span class="data-value">{{ info.location.country }}</span></p>
+                <p>Time zone: <span class="data-value">{{ info.location.timezone }}</span></p>
+                <p>IP address: <span class="data-value">{{ info.location.ip_address }}</span></p>
+                <p>Lat, Long: <span class="data-value">{{ info.location.latitude }}</span>,
+                   <span class="data-value">{{ info.location.longitude }}</span></p>
+            {% else %}
+                <p>Unable to retrieve your location.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="flex-container">
+    <div class="sub-flex-container">
+        {% if info.map_path %}
+        <h1>Your Current Location on a Map</h1>
+        <div id="map">
+            <iframe src="{{ url_for('static', filename='maps/my_location_map.html') }}" width="100%" height="500px"></iframe>
+        </div>
+        {% else %}
+            <p>Unable to load map.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block page_title %}{% block h1 %}
+    Information
+{% endblock %}{% endblock %}
+
+{% block body %}
+    <h1>Explanation of Satellite Pass Data</h1>
+    <div class="flex-container">
+        <div class="sub-flex-container">
+            <h1>Time: 2024-10-02T23:00:40Z</h1>
+            <div class="centered-text">
+                <p><b>Explanation:</b><br><br> This represents the time when a specific event related to the satellite occurs, such as when it becomes visible or reaches a certain altitude.</p>
+                <p><b>Technical Details:</b><br><br> The time is given in ISO 8601 format with the suffix "Z", indicating UTC (Coordinated Universal Time, also known as Zulu time). This helps avoid any confusion with time zones.</p>
+                <p><b>Example:</b><br><br> Here, the satellite reached a certain position in the sky on October 2, 2024, at 23:00:40 UTC.</p>
+            </div>
+        </div>
+        <div class="sub-flex-container">
+            <h1>Event: Rise above 30°</h1>
+            <div class="centered-text">
+                <p><b>Explanation:</b><br><br> This field describes the observed event. In this case, it indicates that the satellite has just passed above 30 degrees above the horizon.</p>
+                <p><b>Technical Details:</b><br><br> The elevation (angular altitude) of a satellite above the horizon is measured in degrees. A satellite rising above 30° is higher in the sky and easier to observe than at lower altitudes.</p>
+                <p><b>Example:</b><br><br> This event could signify that the satellite moved from near the horizon to a position where it is visible above 30 degrees.</p>
+            </div>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="sub-flex-container">
+            <h1>Altitude: 30deg 00' 01.1"</h1>
+            <div class="centered-text">
+                <p><b>Explanation:</b><br><br> Altitude (or elevation) measures the angular height of the satellite above the horizon, expressed in degrees (°), minutes ('), and seconds (").</p>
+                <p><b>Technical Details:</b><br><br> Altitude is an angular measurement, where 0° is the horizon, and 90° is directly overhead (the zenith). The format "30deg 00' 01.1"" is a precise representation of the satellite’s altitude at that moment.</p>
+                <p><b>Example:</b><br><br> Here, the altitude is 30 degrees, meaning the satellite is at a moderately high position in the sky.</p>
+            </div>
+        </div>
+        <div class="sub-flex-container">
+            <h1>Azimuth: 210deg 40' 28.5"</h1>
+            <div class="centered-text">
+                <p><b>Explanation:</b><br><br> Azimuth is a measure of the horizontal angle relative to north. It is also expressed in degrees, minutes, and seconds.</p>
+                <p><b>Technical Details:</b><br><br> Azimuth is used to determine the horizontal direction in which an object is located in the sky. An azimuth of 0° is towards the north, 90° towards the east, 180° towards the south, and 270° towards the west.</p>
+                <p><b>Example:</b><br><br> An azimuth of 210 degrees corresponds to a direction towards the southwest.</p>
+            </div>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="sub-flex-container">
+            <h1>Distance: 1357.0 km</h1>
+            <div class="centered-text">
+                <p><b>Explanation:</b><br><br> This is the distance between the observer and the satellite, measured in kilometers. It is typically useful to know how high the satellite is relative to the Earth or how far away it is visible.</p>
+                <p><b>Technical Details:</b><br><br> Distance can vary significantly depending on the satellite's orbital position. A distance of 1357 km is typical for low-Earth orbit satellites (LEO), such as the International Space Station (ISS).</p>
+                <p><b>Example:</b><br><br> Here, the satellite is 1357 km away from the observer.</p>
+            </div>
+        </div>
+        <div class="sub-flex-container">
+            <h1>Example explained:</h1>
+            <div class="centered-text">
+                <p>
+                    On October 2, 2024, at 23:00:40 UTC, the satellite reached an altitude of 30 degrees above the horizon, in a southwest direction (azimuth of 210°).
+                    At this time, the satellite was 1357 km away from the observer.
+                    The event specifies that the satellite rose above 30° altitude, which is often the moment when it becomes more visible and easier to observe for satellite enthusiasts.
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

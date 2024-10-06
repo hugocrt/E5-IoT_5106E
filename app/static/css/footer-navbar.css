@@ -1,0 +1,142 @@
+.footer {
+    width: 100%; /* Prendre toute la largeur de la page */
+    background: #f0f0f0; /* Fond gris moderne pour le footer */
+    display: flex; /* Utiliser flex pour l'alignement */
+    justify-content: center; /* Centrer le contenu horizontalement */
+    padding: 15px 0; /* Espace intérieur */
+    position: relative;
+    bottom: 0;
+    height: 75px;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex; /* Utiliser flex pour le contenu */
+    justify-content: space-between; /* Espacement entre les éléments */
+    align-items: center; /* Centrer verticalement */
+    width: 90%; /* Limiter la largeur pour le contenu */
+    max-width: 1200px; /* Largeur maximale pour le contenu */
+}
+
+.logo {
+    max-width: 10%;
+    max-height: 100%;
+}
+
+.credits-container,
+.copyright-container {
+    margin: 0 20px; /* Espacement horizontal entre les éléments */
+    color: #000; /* Couleur du texte */
+    font-size: 14px; /* Taille de la police */
+}
+
+/* Style pour le texte dans le footer */
+.credits-container p,
+.copyright-container p {
+    margin: 0; /* Supprimer les marges par défaut */
+    font-weight: bold;
+    color: gray;
+    font-style: italic;
+}
+
+/* Changer la couleur des liens au survol */
+.footer-item a:hover {
+    color: #007BFF; /* Couleur bleue lors du survol */
+}
+
+
+.navbar {
+    opacity: 80%;
+    position: fixed;
+    top: 10px; /* Espace entre la navbar et le haut de la page */
+    left: 50%;
+    transform: translateX(-50%); /* Centrer horizontalement */
+    background: #f0f0f0; /* Fond gris moderne pour la navbar */
+    display: flex;
+    justify-content: center;
+    padding: 5px 30px; /* Espace intérieur de la navbar */
+    border-radius: 25px; /* Arrondir les bords */
+    box-shadow: 0px 0px 3px; /* Ajouter une ombre plus marquée et colorée */
+    z-index: 1000; /* Assure que la navbar est au-dessus des autres éléments */
+    transition: all 0.3s ease; /* Transition pour adoucir l'effet */
+}
+
+/* Effet au survol de la navbar */
+.navbar:hover {
+    transform: translateX(-50%) scale(1.05);
+}
+
+.dock {
+    list-style: none;
+    display: flex;
+    gap: 35px; /* Espace entre les icônes */
+    padding: 0; /* Supprimer le padding de la liste */
+}
+
+.dock li {
+    display: flex; /* Utiliser flex pour centrer les icônes */
+    align-items: center; /* Centrer verticalement */
+    justify-content: center; /* Centrer horizontalement */
+    transition: transform 0.2s ease; /* Transition pour l'effet de transformation */
+    position: relative; /* Nécessaire pour le positionnement absolu de .icon-text */
+}
+
+.dock li a {
+    display: flex; /* Utiliser flex pour centrer les icônes */
+    align-items: center; /* Centrer verticalement */
+    justify-content: center; /* Centrer horizontalement */
+    width: 25px; /* Largeur de chaque icône */
+    height: 25px; /* Hauteur de chaque icône */
+    transition: filter 0.3s ease; /* Transition pour l'effet de filtre */
+}
+
+.dock li a img {
+    width: 100%; /* Prendre toute la largeur de l'élément parent */
+    height: auto; /* Garder le ratio d'aspect */
+}
+
+/* Texte de l'icône */
+.icon-text {
+    display: none; /* Cacher le texte par défaut */
+    position: absolute; /* Positionner le texte par rapport à son parent */
+    top: 40px; /* Positionner le texte au-dessus de l'icône */
+    left: 50%;
+    transform: translateX(-50%); /* Centrer horizontalement */
+    background-color: rgba(255, 255, 255, 0.9); /* Fond blanc semi-transparent */
+    padding: 5px 10px; /* Padding autour du texte */
+    border-radius: 5px; /* Arrondir les bords du texte */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre pour le texte */
+    white-space: nowrap; /* Empêcher le texte de passer à la ligne */
+    font-size: 12px; /* Taille de la police */
+}
+
+/* Afficher le texte au survol de l'icône */
+.dock li:hover .icon-text {
+    display: block; /* Afficher le texte au survol */
+}
+
+/* Effet de survol pour les icônes */
+.dock li:hover {
+    transform: scale(1.2); /* Agrandir l'icône au survol */
+    z-index: 1; /* Assure que l'icône agrandie soit au-dessus des autres */
+}
+
+.dock li:hover a img {
+    filter: brightness(0) saturate(100%) invert(26%) sepia(91%) saturate(5960%) hue-rotate(207deg) brightness(95%) contrast(94%); /* Applique un filtre pour changer la couleur */
+}
+
+/* Style pour la barre au-dessus de l'icône active */
+.dock li.active::before {
+    content: ''; /* Nécessaire pour créer un pseudo-élément */
+    position: absolute; /* Positionnement absolu */
+    top: -8px; /* Positionner juste au-dessus de l'icône */
+    left: 50%; /* Centrer horizontalement */
+    transform: translateX(-50%); /* Ajuster le centrage */
+    width: 50%; /* Largeur de la barre */
+    height: 4px; /* Hauteur de la barre */
+    background-color: #a9cbd7; /* Couleur de la barre (changez comme souhaité) */
+    border-radius: 2px; /* Arrondir les bords de la barre */
+    z-index: 2; /* Assurez-vous qu'elle soit au-dessus des autres éléments */
+}
+
+

@@ -1,0 +1,20 @@
+#map {
+    padding-top: 20px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#map iframe {
+    width: 80%;
+    height: 500px;
+    border: 3px solid #a9cbd7;
+    border-radius: 50px;
+}
+
+.data-value {
+    font-family: "Palatino Linotype", serif;
+    font-weight: bold;
+    color: #a9cbd7;
+    font-size: 16px;
+}

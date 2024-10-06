@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block page_title %}{% block h1 %}
+    Satellites
+{% endblock %}{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/search-satellites.css') }}">
+{% endblock %}
+
+{% block javascript %}
+    <script src="../static/js/view_documents.js" defer></script>
+{% endblock %}
+
+{% block body %}
+
+<p class="top-right"><b>Number of matching results: {{ info['total_documents'] }} in {{ info['time_to_search'] }} ms</b></p>
+
+<form method="get" action="/search">
+    <div class="flex-container">
+        <div class="sub-flex-container">
+            <div class="sub-flex-container-vertical">
+                <div>
+                    <label for="start_date">Select Date:</label>
+                    <input type="date" id="start_date" name="start_date" value="{{ request.args.get('start_date', '') }}">
+                </div>
+                <div>
+                    <label for="start_time">Time:</label>
+                    <input type="time" id="start_time" name="start_time" value="{{ request.args.get('start_time', '00:00') }}">
+
+                    <label for="end_time">To:</label>
+                    <input type="time" id="end_time" name="end_time" value="{{ request.args.get('end_time', '23:00') }}">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="sub-flex-container">
+            <div class="sub-flex-container-vertical">
+                <div class="range-slider-container">
+                    <input type="range" id="min_distance" name="min_distance" min="0" max="100000" step="10"
+                        value="{{ request.args.get('min_distance', 0) }}" oninput="updateDistanceLabels()">
+                    <input type="range" id="max_distance" name="max_distance" min="0" max="100000" step="10"
+                        value="{{ request.args.get('max_distance', 100000) }}" oninput="updateDistanceLabels()">
+                </div>
+                <div class="distance-labels">
+                    <label id="min_distance_label">{{ request.args.get('min_distance', '0') }} km</label>
+                    <label id="max_distance_label">{{ request.args.get('max_distance', '100000') }} km</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-flex-container">
+            <div class="sub-flex-container-vertical">
+                <div class="group">
+                  <img src="{{ url_for('static', filename='img/magnifying-glass.png') }}" alt="PyCharm Logo" class="icon">
+                  <input class="input" id="satellite_name" name="satellite_name" type="search" value="{{ request.args.get('satellite_name', '') }}" placeholder="Search" />
+                </div>
+
+                <div>
+                    <button type="submit">Apply Filters</button>
+                    <button type="button" onclick="window.location.href='/search'">Clear Filters</button>
+                </div>
+
+                <div>
+                    <label for="page-selector">Page:</label>
+                    <select id="page-selector" name="page" onchange="this.form.submit()">
+                        {% set total_pages = (info['total_documents'] // info['per_page']) + (1 if info['total_documents'] % info['per_page'] > 0 else 0) %}
+                        {% set current_page = info['current_page_nb'] %}
+                        {% for num in range(1, total_pages + 1) %}
+                            <option value="{{ num }}" {% if num == current_page %}selected{% endif %}>{{ num }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    <!-- Conteneur pour afficher les résultats sous forme de grille -->
+    <div class="satellite-results">
+    {% for doc in info['documents'] %}
+        <div class="satellite-card">
+            <div class="satellite-title">{{ doc._source.satellite_name }}</div>
+            <ul>
+                {% for event in doc._source.events %}
+                    <div class="event-container">
+                        <li>
+                            <div class="event-row">
+                                <span class="event-title">Time:</span>
+                                <span class="event-data">{{ event.time }}</span>
+                            </div>
+                            <div class="event-row">
+                                <span class="event-title">Event:</span>
+                                <span class="event-data">{{ event.event }}</span>
+                            </div>
+                            <div class="event-row">
+                                <span class="event-title">Altitude:</span>
+                                <span class="event-data">{{ event.altitude }}</span>
+                            </div>
+                            <div class="event-row">
+                                <span class="event-title">Azimuth:</span>
+                                <span class="event-data">{{ event.azimuth }}</span>
+                            </div>
+                            <div class="event-row">
+                                <span class="event-title">Distance:</span>
+                                <span class="event-data">{{ event.distance }} km</span>
+                            </div>
+                        </li>
+                    </div>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

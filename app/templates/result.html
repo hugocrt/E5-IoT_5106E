@@ -1,0 +1,12 @@
+<!-- result.html -->
+{% extends "base.html" %}
+
+
+{% block body %}
+<h1>Passages de Satellites au-dessus de {{ location.city, location.country }} latitude: {{ location.latitude}} longitude:{{ location.longitude }}</h1>
+    <ul>
+        {% for passage in passes[:50] %}
+        <li>{{ passage }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

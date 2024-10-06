@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    Home
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loading.css') }}">
+{% endblock %}
+
+{% block javascript %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+    <script src="../static/js/loading.js" defer></script>
+{% endblock %}
+
+
+{% block body %}
+    {% include 'loader.html' %}
+
+    <div class="index">
+        <h1>IoT-5106E FlaskApp</h1>
+
+        <form id="satellite-form" method="POST" action="{{ url_for('main.index') }}">
+            <button type="submit" class="top-right">Calculate Passes</button>
+        </form>
+
+        <!-- Contenu de la page d'accueil -->
+        <div class="content">
+            <p><i><b>Here's a quick explanation of the pages !</b></i></p>
+            <div class="flex-container">
+                <div class="sub-flex-container">
+                    <img class="index-icon" src="{{ url_for('static', filename='img/satellite.png') }}" alt="satellite">
+                    <p>This page allows you to search satellite data. Before accessing it, calculate the data by pressing the button at the top right of the home page</p>
+                </div >
+                <div class="sub-flex-container">
+                    <img class="index-icon" src="{{ url_for('static', filename='img/info.png') }}" alt="info">
+                    <p>This page allows you to understand the event information on the satellites page through examples</p>
+                </div>
+                <div class="sub-flex-container">
+                    <img class="index-icon" src="{{ url_for('static', filename='img/maps-and-flags.png') }}" alt="maps-and-flags">
+                    <p>This page allows you to see your position which has been retrieved using your IP address, you also have a view of your position on a map</p>
+                </div>
+                <div class="sub-flex-container">
+                    <img class="index-icon" src="{{ url_for('static', filename='img/link.png') }}" alt="link">
+                    <p>This page allows you to see where the different data was collected and what tools were used to carry out this project,</p>
+                </div>
+            </div>
+            <p><i><b>Have a good time using my FlaskApp ! :)</b></i></p>
+        </div>
+    </div>
+
+{% endblock %}
